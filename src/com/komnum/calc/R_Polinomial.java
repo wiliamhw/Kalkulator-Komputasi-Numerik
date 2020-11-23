@@ -12,7 +12,7 @@ public class R_Polinomial extends Regression {
 		super(n, m);
 		this.m = m;
 		
-		cd = c2 = null;
+		cd = c2 = D2 = Dt2 = null;
 		pow_x = new double[n][m + 1];
 		pow_cd = new double[n][m];
 		sum_powX = new double[m + 1];
