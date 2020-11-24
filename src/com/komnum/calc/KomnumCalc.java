@@ -31,7 +31,6 @@ public abstract class KomnumCalc {
 				xy_tb[i][j] = scanner.nextDouble();
 			}
 		}
-		scanner.close();
 	}
 	
 	public int getN() {

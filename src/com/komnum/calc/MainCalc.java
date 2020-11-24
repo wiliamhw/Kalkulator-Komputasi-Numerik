@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MainCalc {
 
 	public static void main(String[] args) {
+		int m = 0;
 		Scanner scanner = new Scanner(System.in);
 		KomnumCalc calc = null;
 		
@@ -76,7 +77,7 @@ public class MainCalc {
 					}
 					else if (opCode == 3) {
 						System.out.print("Masukan orde polinomial: ");
-						int m = scanner.nextInt();
+						m = scanner.nextInt();
 						
 						if (n >= m + 1) {
 							calc = new R_Polinomial(n, m);
@@ -89,13 +90,13 @@ public class MainCalc {
 			}
 		} 
 		
+		
 		if (calc != null) {
 			calc.calculate();
 			calc.printResult();
 		} else {
 			System.out.println("Wrong opCode");
 		}
-		
 		scanner.close();
 	}
 
