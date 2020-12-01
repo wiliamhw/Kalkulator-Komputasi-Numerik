@@ -180,8 +180,9 @@ public class R_Polinomial extends Regression {
 				System.out.printf(" + ");
 			}
 		}
+		System.out.printf("\nym   = %.3f\n", ym);
 		System.out.printf("\nr^(2) = %.3f\n", r2);
-		System.out.printf("r     = %.3f\n", Math.abs(Math.sqrt(r2)));
+		System.out.printf("r     = %.3f\n", Math.sqrt(Math.abs(r2)));
 	}
 }
 
