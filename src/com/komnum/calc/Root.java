@@ -2,6 +2,7 @@ package com.komnum.calc;
 
 public abstract class Root {
 	protected int n;
+	protected double[][] xy_tb; // row x column y
 
 	public Root(int n) {
 		this.n = n;
@@ -20,7 +21,7 @@ public abstract class Root {
 	}
 	
 	public double getEr(double Va, double Ve) {
-		double Er = (Va == 0) ? 100 : (getEa(Va, Ve) / Va) * 100;
+		double Er = (Va == 0) ? 100 : Math.abs((getEa(Va, Ve) / Va) * 100);
 		return Er;
 	}
 	

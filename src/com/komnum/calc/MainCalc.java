@@ -11,7 +11,10 @@ public class MainCalc {
 		
 		System.out.println("1. Interpolasi");
 		System.out.println("2. Regresi");
-		int opCode = scanner.nextInt();
+		System.out.println("3. Integrasi");
+		int opCode;
+		opCode = scanner.nextInt();
+//		opCode = 3;
 		
 		// Pilih materi
 		if (opCode == 1) 
@@ -88,8 +91,63 @@ public class MainCalc {
 					}
 				}
 			}
-		} 
-		
+		}
+		else if (opCode == 3) {
+			int simp = 0;
+			System.out.println("1. Trapezoida");
+			System.out.println("2. Simpson");
+			System.out.println("3. Kuadratur");
+			opCode = scanner.nextInt();
+//			opCode = 2;
+			
+			if (opCode == 2) {
+				System.out.println("1. Simpson 1/3");
+				System.out.println("2. Simpson 3/8");
+				System.out.println("3. Simpson gabungan");
+				simp = scanner.nextInt();
+			}
+			
+			System.out.println("Diketahui:");
+			System.out.println("1. Fungsi F(x)");
+			System.out.println("2. Tabel x dan F(x)");
+			int dik = scanner.nextInt();
+			int n, tmp;
+			
+			// n = banyak pias
+			if (dik == 1) {
+				System.out.print("Masukan banyak pias: ");
+				tmp = 0;
+			} else {
+				System.out.print("Masukan banyak titik: ");
+				tmp = 1;
+			}
+			n = scanner.nextInt();
+			n -= tmp;
+			
+			System.out.print("Masukan batas atas: ");
+			double b = scanner.nextDouble();
+			System.out.print("Masukan batas bawah: ");
+			double a = scanner.nextDouble();
+			
+			// Pilih metode
+			if (opCode == 1) {
+				calc = new Trapezoid(n, a, b, dik);
+			}
+			else if (opCode == 2) {
+				if (simp == 1) {
+					calc = new Simp13(n, a, b, dik);
+				}
+				else if (simp == 2) {
+					calc = new Simp38(n, a, b, dik);
+				}
+				else if (simp == 3) {
+					calc = new SimpInt(n, a, b, dik);
+				}
+			}
+			else if (opCode == 3) {
+				
+			}
+		}
 		
 		if (calc != null) {
 			calc.calculate();

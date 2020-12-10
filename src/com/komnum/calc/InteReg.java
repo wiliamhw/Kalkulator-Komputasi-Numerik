@@ -2,7 +2,6 @@ package com.komnum.calc;
 import java.util.Scanner;
 
 public abstract class InteReg extends Root {
-	protected double[][] xy_tb; // row x column
 	
 	public InteReg(int n) {
 		super(n);
