@@ -1,12 +1,11 @@
 package com.komnum.calc;
 import java.util.Scanner;
 
-public abstract class InteReg {
+public abstract class InteReg extends Root {
 	protected double[][] xy_tb; // row x column
-	protected int n;
 	
 	public InteReg(int n) {
-		this.n = n;
+		super(n);
 		setxy_tb();
 	}
 
@@ -31,28 +30,6 @@ public abstract class InteReg {
 				xy_tb[i][j] = scanner.nextDouble();
 			}
 		}
-	}
-	
-	public int getN() {
-		return n;
-	}
-	
-	public void setN(int n) {
-		this.n = n;
-	}
-	
-	public double getEa(double Va, double Ve) {
-		return Va - Ve;
-	}
-	
-	public double getEr(double Va, double Ve) {
-		double Er = (Va == 0) ? 100 : (getEa(Va, Ve) / Va) * 100;
-		return Er;
-	}
-	
-	public double roundTo(double num, int precision) {
-		double temp = Math.pow(10, precision);
-		return (double) Math.round(num * temp) / temp;
 	}
 	
 	public abstract void printResult();

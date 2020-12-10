@@ -3,11 +3,11 @@ package com.komnum.calc;
 import java.util.Scanner;
 
 public class MainCalc {
-
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) {	
 		int m = 0;
 		Scanner scanner = new Scanner(System.in);
-		InteReg calc = null;
+		Root calc = null;
 		
 		System.out.println("1. Interpolasi");
 		System.out.println("2. Regresi");
