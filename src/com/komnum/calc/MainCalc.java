@@ -5,16 +5,15 @@ import java.util.Scanner;
 public class MainCalc {
 	
 	public static void main(String[] args) {	
-		int m = 0;
+		int opCode, n;
 		Scanner scanner = new Scanner(System.in);
 		Root calc = null;
 		
-		System.out.println("1. Interpolasi");
-		System.out.println("2. Regresi");
-		System.out.println("3. Integrasi");
-		int opCode;
-		opCode = scanner.nextInt();
-//		opCode = 3;
+//		System.out.println("1. Interpolasi");
+//		System.out.println("2. Regresi");
+//		System.out.println("3. Integrasi");
+//		opCode = scanner.nextInt();
+		opCode = 3;
 		
 		// Pilih materi
 		if (opCode == 1) 
@@ -29,7 +28,7 @@ public class MainCalc {
 			if (opCode > 0 && opCode < 5) 
 			{
 				System.out.print("Masukan n: ");
-				int n = scanner.nextInt();
+				n = scanner.nextInt();
 				System.out.print("Masukan x target: ");
 				double x = scanner.nextDouble();
 				
@@ -61,7 +60,7 @@ public class MainCalc {
 					
 					if (opCode == 1 || opCode == 2) {
 						System.out.print("Masukan n: ");
-						int n = scanner.nextInt();
+						n = scanner.nextInt();
 						
 						if (opCode == 1) {
 							 calc = new Eksponensial(n);
@@ -73,14 +72,14 @@ public class MainCalc {
 				}
 				else {
 					System.out.print("Masukan n: ");
-					int n = scanner.nextInt();
+					n = scanner.nextInt();
 					
 					if (opCode == 1) {
 						calc = new RKT_Linear(n);
 					}
 					else if (opCode == 3) {
 						System.out.print("Masukan orde polinomial: ");
-						m = scanner.nextInt();
+						int m = scanner.nextInt();
 						
 						if (n >= m + 1) {
 							calc = new R_Polinomial(n, m);
@@ -111,7 +110,7 @@ public class MainCalc {
 			System.out.println("1. Fungsi F(x)");
 			System.out.println("2. Tabel x dan F(x)");
 			int dik = scanner.nextInt();
-			int n, tmp;
+			int tmp;
 			
 			// n = banyak pias
 			if (dik == 1) {
@@ -131,7 +130,12 @@ public class MainCalc {
 			
 			// Pilih metode
 			if (opCode == 1) {
-				calc = new Trapezoid(n, a, b, dik);
+//				System.out.println("1. Equispaced");
+//				System.out.println("2. Non-Equispaced (DANGER --> belum dites)");
+				int type;
+//				type = scanner.nextInt();
+				type = 1;
+				calc = new Trapezoid(n, a, b, dik, type);
 			}
 			else if (opCode == 2) {
 				if (simp == 1) {

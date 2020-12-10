@@ -1,24 +1,37 @@
 package com.komnum.calc;
 
+import java.util.Scanner;
+
 public class Trapezoid extends Integrasi {
 	// equispaced
 	private double K;
 	private double d_X2;
 	private double Fin;
 	private double Fi0;
+	private int type;
 
-	public Trapezoid(int n, double a, double b, int dik) {
+	public Trapezoid(int n, double a, double b, int dik, int type) {
 		super(n, a, b, dik);
+		this.type = type;
 	}
 	
 	public void calculate() {
-		sum = xy_tb[0][1];
-		
-		for (int i = 1; i < n; i++) {
-			sum += 2 * xy_tb[i][1];
+		if (type == 1) {
+			sum = xy_tb[0][1];
+			
+			for (int i = 1; i < n; i++) {
+				sum += 2 * xy_tb[i][1];
+			}
+			sum += xy_tb[n][1];
+			I = d_X * sum / 2;
 		}
-		sum += xy_tb[n][1];
-		I = d_X * sum / 2;
+		else {
+			for (int i = 1; i <= n; i++) {
+				sum += (xy_tb[i][0] - xy_tb[i - 1][0]) *
+						(xy_tb[i - 1][1] + xy_tb[i][1] / 2);
+			}
+			I = sum;
+		}
 	}
 	
 	private void getK() {
@@ -30,11 +43,14 @@ public class Trapezoid extends Integrasi {
 	}
 	
 	public void printResult() {
-		System.out.printf("Intergrasi trapezoida equispaced dengan %d pias:\n", n);
-		System.out.printf("I = (%.4f) . [%.4f / 2]\n", d_X, sum);
+		String tmp = (type == 1) ? "equispaced" : "non-equispaced";
+		System.out.printf("Intergrasi trapezoida %s dengan %d pias:\n", n, tmp);
+		if (type == 1) {
+			System.out.printf("I = (%.4f) . [%.4f / 2]\n", d_X, sum);
+		}
 		System.out.printf("I = %.4f\n", I);
 		
-		if (dik == 1) {
+		if (dik == 1 && type == 1) {
 			System.out.printf("Va = %.4f --> ", Va);
 			System.out.printf("Er = %.4f%c\n", super.getEr(Va, I), '%');
 		
@@ -67,4 +83,4 @@ Dik: Tabel x dan F(x)
 5	29.1437
 6	40.9724
 7	54.8011
- */
+*/
