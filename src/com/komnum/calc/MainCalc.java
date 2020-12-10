@@ -7,7 +7,7 @@ public class MainCalc {
 	public static void main(String[] args) {
 		int m = 0;
 		Scanner scanner = new Scanner(System.in);
-		KomnumCalc calc = null;
+		InteReg calc = null;
 		
 		System.out.println("1. Interpolasi");
 		System.out.println("2. Regresi");

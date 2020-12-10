@@ -1,6 +1,6 @@
 package com.komnum.calc;
 
-public abstract class Interpolasi extends KomnumCalc {
+public abstract class Interpolasi extends InteReg {
 	protected double x_target;
 	
 	public Interpolasi(int n, double x_target) {

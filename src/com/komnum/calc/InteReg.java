@@ -1,11 +1,11 @@
 package com.komnum.calc;
 import java.util.Scanner;
 
-public abstract class KomnumCalc {
+public abstract class InteReg {
 	protected double[][] xy_tb; // row x column
 	protected int n;
 	
-	public KomnumCalc(int n) {
+	public InteReg(int n) {
 		this.n = n;
 		setxy_tb();
 	}

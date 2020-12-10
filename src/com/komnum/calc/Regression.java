@@ -1,6 +1,6 @@
 package com.komnum.calc;
 
-public abstract class Regression extends KomnumCalc {
+public abstract class Regression extends InteReg {
 	protected double[] cd; // x*y or q*p
 	protected double[] c2;
 	
