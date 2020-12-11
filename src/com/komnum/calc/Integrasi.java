@@ -9,6 +9,11 @@ public abstract class Integrasi extends Root {
 	protected double sum;
 	protected double I;
 	protected double Va;
+	protected double res[];
+	
+	// Variabel khusus metode kuadratur
+	protected double c[];
+	protected double oldX[];
 	
 	protected int dik;
 	
@@ -21,18 +26,12 @@ public abstract class Integrasi extends Root {
 	}
 	
 	
-	private void setD_X() {
-		if (dik == 1) {
-			this.d_X = (b - a) / n;
-		}
-		else {
-			Scanner scanner = new Scanner(System.in);
-			System.out.print("Selisih x: ");
-			this.d_X = scanner.nextDouble();
-		}
+	
+	protected void setD_X() {
+		this.d_X = (b - a) / n;
 	}
 	
-	private void setXY() {
+	protected void setXY() {
 		if (d_X == 0) throw new ArithmeticException("batas atas = batas bawah");
 		xy_tb = new double[n + 1][2];
 		
@@ -58,6 +57,8 @@ public abstract class Integrasi extends Root {
 	}
 	
 	protected void setVa() {
+		System.out.printf("F'b = %.4f\n", F_integral(xy_tb[n][0]));
+		System.out.printf("F'a = %.4f\n", F_integral(xy_tb[0][0]));
 		this.Va = F_integral(xy_tb[n][0]) - F_integral(xy_tb[0][0]);
 	}
 	
@@ -75,9 +76,3 @@ public abstract class Integrasi extends Root {
 	public abstract void printResult();
 	public abstract void calculate();
 }
-
-// n = banyak pias --> n = banyak titik
-// 	  n pias --> n + 1 titikn
-// setx
-// sety
-// set bisa diinput dari persamaan dan tabel

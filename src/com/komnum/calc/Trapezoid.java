@@ -13,22 +13,26 @@ public class Trapezoid extends Integrasi {
 	public Trapezoid(int n, double a, double b, int dik, int type) {
 		super(n, a, b, dik);
 		this.type = type;
+		res = new double[n + 1];
 	}
 	
 	public void calculate() {
 		if (type == 1) {
-			sum = xy_tb[0][1];
+			res[0] = xy_tb[0][1];
 			
 			for (int i = 1; i < n; i++) {
-				sum += 2 * xy_tb[i][1];
+				res[i] = 2 * xy_tb[i][1];
+				sum += res[i];
 			}
-			sum += xy_tb[n][1];
+			res[n] = xy_tb[n][1];
+			sum += res[n];
 			I = d_X * sum / 2;
 		}
 		else {
 			for (int i = 1; i <= n; i++) {
-				sum += (xy_tb[i][0] - xy_tb[i - 1][0]) *
-						(xy_tb[i - 1][1] + xy_tb[i][1] / 2);
+				res[i - 1] = (xy_tb[i][0] - xy_tb[i - 1][0]) *
+						(xy_tb[i][1] + xy_tb[i - 1][1]) / 2;
+				sum += res[i - 1];
 			}
 			I = sum;
 		}
@@ -44,11 +48,17 @@ public class Trapezoid extends Integrasi {
 	
 	public void printResult() {
 		String tmp = (type == 1) ? "equispaced" : "non-equispaced";
-		System.out.printf("Intergrasi trapezoida %s dengan %d pias:\n", n, tmp);
-		if (type == 1) {
-			System.out.printf("I = (%.4f) . [%.4f / 2]\n", d_X, sum);
+		System.out.printf("Intergrasi trapezoida %s dengan %d pias:\n", tmp, n);
+		
+		System.out.printf("I = ");
+		if (type == 1) System.out.printf("(%.4f)/2 . (", d_X);
+		System.out.printf("%8.4f", res[0]);
+		for (int i = 1; i < n; i++) {
+			System.out.printf(" + %8.4f", res[i]);
 		}
-		System.out.printf("I = %.4f\n", I);
+		if (type == 1) System.out.printf("+ %8.4f)", res[n]);
+		System.out.printf("\nI = %8.4f\n", I);
+		
 		
 		if (dik == 1 && type == 1) {
 			System.out.printf("Va = %.4f --> ", Va);
@@ -68,14 +78,19 @@ public class Trapezoid extends Integrasi {
 
 /*
 Dik: Fungsi
+1
+1
 4
 4
 0
 
 Dik: Tabel x dan F(x)
+1
+2
 7
 7
 1
+------------
 1	1.8287
 2	5.6575
 3	11.4862

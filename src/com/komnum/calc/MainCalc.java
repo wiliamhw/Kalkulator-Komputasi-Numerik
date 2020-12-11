@@ -9,11 +9,10 @@ public class MainCalc {
 		Scanner scanner = new Scanner(System.in);
 		Root calc = null;
 		
-//		System.out.println("1. Interpolasi");
-//		System.out.println("2. Regresi");
+		System.out.println("1. Interpolasi");
+		System.out.println("2. Regresi");
 //		System.out.println("3. Integrasi");
-//		opCode = scanner.nextInt();
-		opCode = 3;
+		opCode = scanner.nextInt();
 		
 		// Pilih materi
 		if (opCode == 1) 
@@ -97,7 +96,6 @@ public class MainCalc {
 			System.out.println("2. Simpson");
 			System.out.println("3. Kuadratur");
 			opCode = scanner.nextInt();
-//			opCode = 2;
 			
 			if (opCode == 2) {
 				System.out.println("1. Simpson 1/3");
@@ -106,14 +104,20 @@ public class MainCalc {
 				simp = scanner.nextInt();
 			}
 			
-			System.out.println("Diketahui:");
-			System.out.println("1. Fungsi F(x)");
-			System.out.println("2. Tabel x dan F(x)");
-			int dik = scanner.nextInt();
+			// AKAN DIGANTI (setelah implementasi metode kaudratur dgn dik == 2)
+			int dik;
+			if (opCode != 3) {
+				System.out.println("Diketahui:");
+				System.out.println("1. Fungsi F(x)");
+				System.out.println("2. Tabel x dan F(x)");
+				dik = scanner.nextInt();
+			} else {
+				dik = 1;
+			}
 			int tmp;
 			
 			// n = banyak pias
-			if (dik == 1) {
+			if (dik == 1 && opCode != 3) {
 				System.out.print("Masukan banyak pias: ");
 				tmp = 0;
 			} else {
@@ -130,11 +134,12 @@ public class MainCalc {
 			
 			// Pilih metode
 			if (opCode == 1) {
-//				System.out.println("1. Equispaced");
-//				System.out.println("2. Non-Equispaced (DANGER --> belum dites)");
-				int type;
-//				type = scanner.nextInt();
-				type = 1;
+				int type = 1;
+				if (dik == 2) {
+					System.out.println("1. Equispaced");
+					System.out.println("2. Non-Equispaced (DANGER --> belum dites)");
+					type = scanner.nextInt();
+				}
 				calc = new Trapezoid(n, a, b, dik, type);
 			}
 			else if (opCode == 2) {
@@ -149,7 +154,7 @@ public class MainCalc {
 				}
 			}
 			else if (opCode == 3) {
-				
+				calc = new Kuadratur(n, a, b, dik);
 			}
 		}
 		
