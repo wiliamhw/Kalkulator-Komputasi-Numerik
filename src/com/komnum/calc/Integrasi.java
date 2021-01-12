@@ -18,11 +18,13 @@ public abstract class Integrasi extends Root {
 	protected int dik;
 	
 	protected double F(double x) {
-		return Math.exp(x);
+		return 2 * Math.PI * Math.exp(Math.log(Math.PI/2) * x);
+//		return Math.pow(x + 1/x, 2);
 	}
 	
 	protected double F_integral(double x) {
-		return Math.exp(x);
+		return 4 * Math.PI * Math.exp(Math.log(Math.PI) * x/2) / Math.log(Math.PI);
+//		return Math.pow(x, 3) + x * 2 - 1/x;
 	}
 	
 	

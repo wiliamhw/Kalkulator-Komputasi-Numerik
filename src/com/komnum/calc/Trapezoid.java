@@ -1,7 +1,5 @@
 package com.komnum.calc;
 
-import java.util.Scanner;
-
 public class Trapezoid extends Integrasi {
 	// equispaced
 	private double K;
@@ -18,12 +16,15 @@ public class Trapezoid extends Integrasi {
 	
 	public void calculate() {
 		if (type == 1) {
+			double tmp = 0;
 			res[0] = xy_tb[0][1];
+			sum = res[0];
 			
 			for (int i = 1; i < n; i++) {
-				res[i] = 2 * xy_tb[i][1];
-				sum += res[i];
+				res[i] = xy_tb[i][1];
+				tmp += res[i];
 			}
+			sum += tmp * 2;
 			res[n] = xy_tb[n][1];
 			sum += res[n];
 			I = d_X * sum / 2;
@@ -54,7 +55,15 @@ public class Trapezoid extends Integrasi {
 		if (type == 1) System.out.printf("(%.4f)/2 . (", d_X);
 		System.out.printf("%8.4f", res[0]);
 		for (int i = 1; i < n; i++) {
-			System.out.printf(" + %8.4f", res[i]);
+			if (i == 1) {
+				System.out.printf(" + 2(%8.4f", res[i]);
+			}
+			else {
+				System.out.printf(" + %8.4f", res[i]);
+			}
+			if (i == n - 1) {
+				System.out.printf(")");
+			}
 		}
 		if (type == 1) System.out.printf("+ %8.4f)", res[n]);
 		System.out.printf("\nI = %8.4f\n", I);

@@ -20,3 +20,11 @@ dalam bahasa Java
     - Fungsi Eksponensial (Transformasi ln)
     - Fungsi Berpangkat (Transformasi log)
 3. Polinomial
+
+## Catatan
+* Metode Integrasi belum dipastikan benar.
+* Class metode Integrasi:
+    * Simp
+    * Simp13
+    * Simp38
+    * SimpInt

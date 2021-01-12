@@ -105,15 +105,15 @@ public class MainCalc {
 			}
 			
 			// AKAN DIGANTI (setelah implementasi metode kaudratur dgn dik == 2)
-			int dik;
-			if (opCode != 3) {
-				System.out.println("Diketahui:");
-				System.out.println("1. Fungsi F(x)");
-				System.out.println("2. Tabel x dan F(x)");
-				dik = scanner.nextInt();
-			} else {
-				dik = 1;
-			}
+			int dik = 1;
+//			if (opCode != 3) {
+//				System.out.println("Diketahui:");
+//				System.out.println("1. Fungsi F(x)");
+//				System.out.println("2. Tabel x dan F(x)");
+//				dik = scanner.nextInt();
+//			} else {
+//				dik = 1;
+//			}
 			int tmp;
 			
 			// n = banyak pias

@@ -1,7 +1,5 @@
 package com.komnum.calc;
 
-import java.util.Scanner;
-
 public class Kuadratur extends Integrasi {
 	private double dxd;
 
@@ -13,16 +11,38 @@ public class Kuadratur extends Integrasi {
 		xy_tb = new double[n + 1][2];
 		c = new double[n + 1];
 		oldX = new double[n + 1];
-		
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Masukan nilai c dan xd");
-		System.out.printf("%-8c %-8s\n", 'c', "xd");
-		
+		setCX();
+
 		for (int i = 0; i < n + 1; i++) {
-			c[i] = scanner.nextDouble();
-			oldX[i] = scanner.nextDouble();
 			xy_tb[i][0] = convertXi(oldX[i]);
-			xy_tb[i][1] = F_integral(xy_tb[i][0]);
+			xy_tb[i][1] = F(xy_tb[i][0]);
+		}
+	}
+	
+	private void setCX() {
+		if (n == 1) {
+			c[0] = 1;
+			c[1] = 1;
+			oldX[0] = -0.577350269;
+			oldX[1] = 0.577350269;
+		}
+		else if (n == 2) {
+			c[0] = 0.5555556;
+			c[1] = 0.8888889;
+			c[2] = 0.5555556;
+			oldX[0] = -0.774596669;
+			oldX[1] = 0;
+			oldX[1] = 0.774596669;
+		}
+		else if (n == 3) {
+			c[0] = 0.3478548;
+			c[1] = 0.6521452;
+			c[2] = 0.6521452;
+			c[3] = 0.3478548;
+			oldX[0] = -0.861136312;
+			oldX[1] = -0.339981044;
+			oldX[2] = 0.339981044;
+			oldX[3] = 0.861136312;
 		}
 	}
 	
